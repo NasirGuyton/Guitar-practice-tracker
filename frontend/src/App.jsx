@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Session from "./pages/Session";
-import "./index.css";
 
 function App() {
   return (
@@ -9,6 +8,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/session" element={<Session />} />
+        <Route path="/session/:id" element={<Session />} />
       </Routes>
     </BrowserRouter>
   );

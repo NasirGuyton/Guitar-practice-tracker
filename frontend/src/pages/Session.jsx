@@ -1,31 +1,42 @@
 import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Session() {
+  const { id } = useParams(); 
+  const navigate = useNavigate();
+
   const [session, setSession] = useState(null);
   const [notes, setNotes] = useState("");
-  const [status, setStatus] = useState("");
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/api/session")
-      .then(res => res.json())
-      .then(data => {
-        setSession(data);
-        setNotes(data.notes);
-      });
-  }, []);
+    if (id) {
+      fetch(`http://127.0.0.1:5000/api/sessions/${id}`)
+        .then(res => res.json())
+        .then(data => {
+          setSession(data);
+          setNotes(data.notes);
+        });
+    }
+    else {
+      fetch("http://127.0.0.1:5000/api/sessions", {
+        method: "POST"
+      })
+        .then(res => res.json())
+        .then(data => {
+          setSession(data);
+          setNotes("");
+        });
+    }
+  }, [id]);
 
-  const saveNotes = () => {
-    fetch("http://127.0.0.1:5000/api/session", {
+  const saveSession = () => {
+    fetch(`http://127.0.0.1:5000/api/sessions/${session.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ notes })
-    })
-      .then(res => res.json())
-      .then(data => {
-        setSession(data);
-        setStatus("Saved ✔");
-        setTimeout(() => setStatus(""), 1500);
-      });
+    }).then(() => {
+      navigate("/");
+    });
   };
 
   if (!session) return <p>Loading session...</p>;
@@ -33,16 +44,17 @@ function Session() {
   return (
     <div className="app">
       <h1>Practice Session</h1>
-      <p>Date: {session.date}</p>
+      <p>{session.date}</p>
 
       <textarea
-        placeholder="What did you practice today?"
         value={notes}
         onChange={(e) => setNotes(e.target.value)}
       />
 
-      <button onClick={saveNotes}>Save Notes</button>
-      <p className="status">{status}</p>
+      <button onClick={saveSession}>Save</button>
+      <button onClick={() => navigate("/")} style={{ marginLeft: "1rem" }}>
+        Back
+      </button>
     </div>
   );
 }

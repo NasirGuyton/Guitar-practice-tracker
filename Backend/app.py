@@ -19,7 +19,6 @@ def save_sessions(sessions):
     with open(DATA_FILE, "w") as f:
         json.dump(sessions, f, indent=2)
 
-#Routes
 
 @app.route("/api/health")
 def health():
@@ -55,6 +54,17 @@ def update_session(session_id):
             return jsonify(session)
 
     return jsonify({"error": "Session not found"}), 404
+
+@app.route("/api/sessions/<int:session_id>", methods=["GET"])
+def get_session(session_id):
+    sessions = load_sessions()
+
+    for session in sessions:
+        if session["id"] == session_id:
+            return jsonify(session)
+
+    return jsonify({"error": "Session not found"}), 404
+
 
 if __name__ == "__main__":
     app.run(debug=True)
