@@ -7,8 +7,7 @@ CORS(app)
 
 practice_session = {
     "id": 1,
-    "date": datetime.now().strftime("%m-%d-%Y")
-,
+    "date": datetime.now().strftime("%m-%d-%Y %I:%M %p"),
     "notes": ""
 }
 
