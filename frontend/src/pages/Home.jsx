@@ -26,12 +26,16 @@ function Home() {
       <ul>
   {sessions.map(session => (
     <li
-      key={session.id}
-      style={{ cursor: "pointer", marginBottom: "0.5rem" }}
-      onClick={() => navigate(`/session/${session.id}`)}
-    >
-      {session.date}
-    </li>
+  key={session.id}
+  onClick={() => navigate(`/session/${session.id}`)}
+>
+  <strong>{session.song || "Untitled"}</strong>
+  {" — "}
+  {session.artist || "Unknown Artist"}
+  <br />
+  <small>{session.date}</small>
+</li>
+
   ))}
 </ul>
 

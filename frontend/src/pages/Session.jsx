@@ -29,22 +29,42 @@ function Session() {
     }
   }, [id]);
 
-  const saveSession = () => {
+  const saveSession = () => 
+
     fetch(`http://127.0.0.1:5000/api/sessions/${session.id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ notes })
-    }).then(() => {
-      navigate("/");
-    });
-  };
+  method: "PUT",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    notes,
+    artist: session.artist,
+    song: session.song
+  })
+})
 
   if (!session) return <p>Loading session...</p>;
 
   return (
+    
     <div className="app">
       <h1>Practice Session</h1>
       <p>{session.date}</p>
+      
+      <input
+  placeholder="Artist"
+  value={session.artist}
+  onChange={(e) =>
+    setSession({ ...session, artist: e.target.value })
+  }
+/>
+
+<input
+  placeholder="Song"
+  value={session.song}
+  onChange={(e) =>
+    setSession({ ...session, song: e.target.value })
+  }
+/>
+
 
       <textarea
         value={notes}

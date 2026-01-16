@@ -33,10 +33,12 @@ def create_session():
     sessions = load_sessions()
 
     new_session = {
-        "id": len(sessions) + 1,
-        "date": datetime.now().strftime("%m-%d-%Y %I:%M %p"),
-        "notes": ""
-    }
+    "id": len(sessions) + 1,
+    "date": datetime.now().strftime("%m-%d-%Y %I:%M %p"),
+    "artist": "",
+    "song": "",
+    "notes": ""
+}
 
     sessions.append(new_session)
     save_sessions(sessions)
@@ -49,7 +51,10 @@ def update_session(session_id):
 
     for session in sessions:
         if session["id"] == session_id:
-            session["notes"] = request.json.get("notes", "")
+            session["notes"] = request.json.get("notes", session["notes"])
+            session["artist"] = request.json.get("artist", session["artist"])
+            session["song"] = request.json.get("song", session["song"])
+
             save_sessions(sessions)
             return jsonify(session)
 
