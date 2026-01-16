@@ -1,0 +1,48 @@
+.app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+button.primary {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+.filter-bar {
+  margin-top: 1rem;
+}
+
+.filter-bar button {
+  margin-left: 0.5rem;
+}
+
+.past-sessions {
+  margin-top: 2rem;
+}
+
+.session-list {
+  list-style: none;
+  padding: 0;
+}
+
+.session-item {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.session-clickable {
+  cursor: pointer;
+}
+
+.session-meta {
+  font-size: 0.85rem;
+  color: #f3f1f1;
+}
+
+.session-delete {
+  margin-top: 0.5rem;
+  background-color: red;
+}

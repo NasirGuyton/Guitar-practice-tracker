@@ -1,0 +1,112 @@
+.session-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: #101010;
+  color: #f6f4f4;
+}
+
+.session-header {
+  margin-bottom: 1rem;
+}
+
+.session-header p {
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+.session-inputs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.session-inputs input {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: none;
+}
+
+.section-card {
+  border: 1px solid #0d0d0d;
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.section-header select {
+  padding: 0.3rem;
+}
+
+.note-card {
+  border: 1px solid #161515;
+  margin-bottom: 0.5rem;
+}
+
+.note-card textarea {
+  width: 100%;
+  min-height: 70px;
+  resize: vertical;
+  margin-bottom: 0.5rem;
+}
+
+.note-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.note-controls input {
+  width: 80px;
+  padding: 0.3rem;
+}
+
+button {
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+button.primary {
+  background: #4caf50;
+  color: black;
+}
+
+button.secondary {
+  background: #eeebeb;
+  color: rgb(8, 8, 8);
+}
+
+.add-button {
+  margin-top: 0.5rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.notification-popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #333;
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  opacity: 0.9;
+  z-index: 1000;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: opacity 0.3s ease;
+}
