@@ -1,2 +1,7 @@
 How to Run:
-In terminal run frontend using npm run dev and backend using python app.py
+In terminal, 
+type cd frontend 
+then type npm run dev
+then in another terminal run
+cd Backend
+then run python app.py
